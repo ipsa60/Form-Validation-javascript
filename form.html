@@ -1,0 +1,85 @@
+<html>
+<script>
+function validation() {
+  var mailformat = /^\w+([\.-]?\w+)*@gmail.com*(\.\w{2,3})+$/;
+  var phoneno = /^\d{10}$/;
+  if (document.getElementById("name").value.length == 0) {
+    document.getElementById("message").innerHTML = "<em> You did not enter your name </em>";
+    return false;
+  }
+  if (document.getElementById("email").value.match(mailformat) != mailformat) {
+    document.getElementById("message1").innerHTML = "<em> please enter </em>";
+    return false;
+  }
+  if (document.getElementById("phone").value.length == 0) {
+    document.getElementById("message3").innerHTML = "<em> You did not enter your phone </em>";
+    return false;
+  }
+  return true;}
+
+<script>  
+function verifyPassword() {  
+  var pw = document.getElementById("pswd").value;  
+  //check empty password field  
+  if(pw == "") {  
+     document.getElementById("message").innerHTML = "**Fill the password please!";  
+     return false;  
+  }  
+   
+ //minimum password length validation  
+  if(pw.length < 8) {  
+     document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";  
+     return false;  
+  }  
+  
+//maximum length of password validation  
+  if(pw.length > 15) {  
+     document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  } else {  
+     alert("Password is correct");  
+  }  
+}  
+</script>  
+ 
+
+<form class="form-horizontal container" method="POST" action="#" onsubmit="return validation()">
+  <!-- Name Validation input -->
+  <div class="form-group">
+    <label class="control-label col-md-2 label1" style="text-align: left;" for="name">Name:</label>
+    <div class="col-md-5">
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+      <span id="message"></span>
+    </div>
+  </div>
+  <!-- Email Validation input -->
+  <div class="form-group">
+    <label class="control-label col-sm-2 label1" style="text-align: left;" for="email">Email:</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+      <span id="message1"></span>
+    </div>
+  </div>
+  
+  <!-- Phone Validation Input -->
+  <div class="form-group">
+    <label class="control-label col-sm-2 label1" style="text-align: left;" for="phone">Phone:</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" id="phone" placeholder="Enter Phone" name="phone">
+      <span id="message3"></span>
+    </div>
+  </div>
+<form onsubmit ="return verifyPassword()">  
+<!-- Enter Password -->  
+<td> Enter Password </td>  
+<input type = "password" id = "pswd" value = "">   
+<span id = "message" style="color:red"> </span> <br><br>  
+<!-- Click to verify valid password -->  
+<label>confirm password:
+<input type="password" name="confirm_password" id="confirm_password" />
+    </label>
+<label><br> <br>
+  <input type="submit" name="submit"  value="submit"  />
+</label> 
+</form>
+</html>
